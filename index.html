@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-9">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
   <title>Download file</title>
@@ -12,9 +12,6 @@
   <div class="container">
     <h1>Загрузка видео</h1>
     <form id="videoForm">
-      <label for="videoInput">Выберите видео:</label>
-      <input type="file" id="videoInput" name="video" accept="video/*">
-      <br><br>
       <button type="button" onclick="downloadFile()">Скачать файл</button>
     </form>
   </div>
@@ -22,14 +19,21 @@
 
   <script>
     function downloadFile() {
-      // Укажите путь к файлу, который необходимо скачать
       const videoUrl = './shrek.mp4';
-      const link = document.createElement('a');
-      link.href = videoUrl;
-      link.download = 'shrek.mp4';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  
+      fetch(videoUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'shrek.mp4';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Ошибка загрузки:', error));
     }
   </script>
 </body>
