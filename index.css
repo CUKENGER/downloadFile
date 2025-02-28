@@ -16,6 +16,14 @@ body {
   text-align: center;
   width: 320px;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 h1 {
   color: #333;
   margin-bottom: 20px;
