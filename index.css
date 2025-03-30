@@ -14,13 +14,15 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 320px;
+		display: flex;
+		gap: 10px;
 }
 
 .form {
     padding: 4px;
     display: flex;
     justify-content: space-between;
+		gap: 10px;
 }
 
 .container_1 {
